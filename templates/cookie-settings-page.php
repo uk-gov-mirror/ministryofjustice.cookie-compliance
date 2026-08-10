@@ -244,7 +244,7 @@ if ($is_block_theme) {
     </p>
 
     <p class="cc:w-full cc:w-max-[666px]">
-        Google is not allowed to use or share our analytics data with anyone.
+        We use Google Analytics in accordance with Google's data processing and privacy terms.
     </p>
 
     <p class="cc:w-full cc:w-max-[666px]">
@@ -302,7 +302,7 @@ if ($is_block_theme) {
                         _gid
                     </td>
                     <td class="cc:px-2 cc:md:px-6 cc:py-2 cc:md:py-3 cc:border-solid cc:border-t-0 cc:border-x-0 cc:border-b cc:border-current/90 cc:first:ps-0 cc:last:pe-0">
-                        This help us count how many people visit by tracking if you have visited before
+                        This helps us count how many people visit by tracking if you have visited before
                     </td>
                     <td class="cc:px-2 cc:md:px-6 cc:py-2 cc:md:py-3 cc:border-solid cc:border-t-0 cc:border-x-0 cc:border-b cc:border-current/90 cc:first:ps-0 cc:last:pe-0">
                         24 hours
@@ -313,7 +313,7 @@ if ($is_block_theme) {
                         _gat_[hash]
                     </td>
                     <td class="cc:px-2 cc:md:px-6 cc:py-2 cc:md:py-3 cc:border-solid cc:border-t-0 cc:border-x-0 cc:border-b cc:border-current/90 cc:first:ps-0 cc:last:pe-0">
-                        This help us to manage how we collect analytics when we have lots of visitors on the site at one time
+                        This helps us manage how we collect analytics when we have lots of visitors on the site at one time
                     </td>
                     <td class="cc:min-w-[75px] cc:px-2 cc:md:px-6 cc:py-2 cc:md:py-3 cc:border-solid cc:border-t-0 cc:border-x-0 cc:border-b cc:border-current/90 cc:first:ps-0 cc:last:pe-0">
                         10 minutes
