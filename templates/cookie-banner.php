@@ -3,7 +3,7 @@
 defined('ABSPATH') || exit;
 
 $site_name = !empty(get_bloginfo()) ? get_bloginfo() : "this site"; 
-$site_url = get_site_url();
+$site_url = get_home_url();
 /* */
 $display_cookie_banner = 1;
 
