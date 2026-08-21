@@ -25,6 +25,6 @@ include 'inc/admin-page.php';
 register_activation_hook( __FILE__, 'cookie_compliance_flush_rewrite_rules' );
 
 function cookie_compliance_flush_rewrite_rules() {
-    cookie_compliance_rewrite_rule();
-    flush_rewrite_rules();
+	cookie_compliance_rewrite_rule();
+	flush_rewrite_rules();
 }

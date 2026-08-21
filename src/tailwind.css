@@ -3,9 +3,8 @@
 @import "tailwindcss/theme.css" layer(theme) prefix(cc);
 @import "tailwindcss/utilities.css" layer(utilities) prefix(cc);
 
-
 @source "../templates/*.php";
 
 @theme {
-  --container-padding: 10rem;
+	--container-padding: 10rem;
 }
