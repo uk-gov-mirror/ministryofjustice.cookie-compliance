@@ -22,7 +22,7 @@ jobs:
       - name: Run Prettier check
         id: prettier
         continue-on-error: true
-        run: npx prettier --check "**/*.{js,ts,jsx,tsx,html,css,scss,json}"
+        run: npx prettier --check "**/*.{js,ts,jsx,tsx,html,css,scss,json,php}"
 
       - name: Comment on PR if Prettier fails
         if: steps.prettier.outcome == 'failure'

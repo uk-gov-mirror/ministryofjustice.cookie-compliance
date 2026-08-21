@@ -7,7 +7,7 @@
 		"build:sass": "sass src/styles.scss dist/styles.css",
 		"build:govjs": "cp node_modules/govuk-frontend/dist/govuk/components/accordion/accordion.bundle.js dist/accordion.js && cp node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.js dist/frontend.js",
 		"build": "npm run build:tailwind && npm run build:sass && postcss dist/styles.css -o dist/styles.css && cp src/js/cookie-script.js dist/cookie-script.js",
-		"release": "npm run build && npm run format",
+		"release": "npm run format && npm run build",
 		"format": "npx prettier --write \"**/*.{js,ts,jsx,tsx,html,css,scss,json,php}\"",
 		"check": "npx prettier --check .",
 		"watch:tailwind": "npx tailwindcss -i ./src/tailwind.css -o ./dist/tailwind.css --watch",
