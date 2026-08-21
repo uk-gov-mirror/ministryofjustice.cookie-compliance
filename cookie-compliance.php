@@ -4,7 +4,7 @@
 Plugin Name: Cookie Compliance
 Plugin URI: https://github.com/ministryofjustice/cookie-compliance
 Description: Cookie consent banner
-Version: 1.3.6
+Version: 1.3.7
 Author: Ministry of Justice
 Author URI: https://github.com/ministryofjustice
 Text Domain: cookie-compliance
