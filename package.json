@@ -8,7 +8,7 @@
 		"build:govjs": "cp node_modules/govuk-frontend/dist/govuk/components/accordion/accordion.bundle.js dist/accordion.js && cp node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.js dist/frontend.js",
 		"build": "npm run build:tailwind && npm run build:sass && postcss dist/styles.css -o dist/styles.css && cp src/js/cookie-script.js dist/cookie-script.js",
 		"release": "npm run build && npm run format",
-		"format": "npx prettier --write \"**/*.{js,ts,jsx,tsx,html,css,scss,json}\"",
+		"format": "npx prettier --write \"**/*.{js,ts,jsx,tsx,html,css,scss,json,php}\"",
 		"check": "npx prettier --check .",
 		"watch:tailwind": "npx tailwindcss -i ./src/tailwind.css -o ./dist/tailwind.css --watch",
 		"watch:sass": "sass src/styles.scss dist/styles.css --watch",
@@ -16,6 +16,7 @@
 		"start": "npm run watch"
 	},
 	"devDependencies": {
+		"@prettier/plugin-php": "^0.24.0",
 		"@ministryofjustice/frontend": "^3.0.3",
 		"@tailwindcss/cli": "^4.3.3",
 		"@tailwindcss/postcss": "^4.3.3",

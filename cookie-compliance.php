@@ -13,18 +13,19 @@ License: MIT
 
 */
 
-defined('ABSPATH') || exit;
+defined("ABSPATH") || exit();
 
 // Define the plugin version - to clear asset cache on plugin updates.
-define('COOKIE_COMPLIANCE_VERSION', get_file_data(__FILE__, array('Version' => 'Version'), false)['Version']);
+define("COOKIE_COMPLIANCE_VERSION", get_file_data(__FILE__, ["Version" => "Version"], false)["Version"]);
 
-include 'inc/settings.php';
+include "inc/settings.php";
 
-include 'inc/admin-page.php';
+include "inc/admin-page.php";
 
-register_activation_hook( __FILE__, 'cookie_compliance_flush_rewrite_rules' );
+register_activation_hook(__FILE__, "cookie_compliance_flush_rewrite_rules");
 
-function cookie_compliance_flush_rewrite_rules() {
+function cookie_compliance_flush_rewrite_rules()
+{
 	cookie_compliance_rewrite_rule();
 	flush_rewrite_rules();
 }

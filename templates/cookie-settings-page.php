@@ -1,29 +1,30 @@
 <?php
 
-defined('ABSPATH') || exit;
+defined("ABSPATH") || exit();
 
 // Block (FSE) themes have no header.php or footer.php, so get_header() and
 // get_footer() fall through to wp-includes/theme-compat/*.php and render the
 // old Kubrick markup. Build the document ourselves in that case.
 
-if (!function_exists('cookie_compliance_block_part')) {
+if (!function_exists("cookie_compliance_block_part")) {
 	// Return the rendered HTML for a block theme's header or footer template
 	// part. Themes don't always name them plain 'header' and 'footer' (govwind
 	// uses 'header-default'), so fall back to whatever theme.json declares for
 	// the area.
-	function cookie_compliance_block_part($area) {
-		$part = get_block_template(get_stylesheet() . '//' . $area, 'wp_template_part');
+	function cookie_compliance_block_part($area)
+	{
+		$part = get_block_template(get_stylesheet() . "//" . $area, "wp_template_part");
 
 		if (!$part) {
-			$parts = get_block_templates(array('area' => $area), 'wp_template_part');
+			$parts = get_block_templates(["area" => $area], "wp_template_part");
 			$part = !empty($parts) ? $parts[0] : null;
 		}
 
-		return ($part && !empty($part->content)) ? do_blocks($part->content) : '';
+		return $part && !empty($part->content) ? do_blocks($part->content) : "";
 	}
 }
 
-$is_block_theme = function_exists('wp_is_block_theme') && wp_is_block_theme();
+$is_block_theme = function_exists("wp_is_block_theme") && wp_is_block_theme();
 $support_dark_mode = false;
 
 if ($is_block_theme) {
@@ -34,33 +35,50 @@ if ($is_block_theme) {
 	// Render the template parts before <head>, so blocks inside them can still
 	// enqueue their styles in wp_head(). Core does the same in
 	// wp-includes/template-canvas.php.
-	$header_html = cookie_compliance_block_part('header');
-	$footer_html = cookie_compliance_block_part('footer');
+	$header_html = cookie_compliance_block_part("header");
+	$footer_html = cookie_compliance_block_part("footer");
 	?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-	<meta charset="<?php bloginfo('charset'); ?>" />
+	<meta charset="<?php bloginfo("charset"); ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
 	<?php
-	wp_body_open();
-	// Classic themes such as Hale already open <main> in header.php.
-	echo '<div class="wp-site-blocks"><header class="wp-block-template-part">' . $header_html . '</header><main lang="en" class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top: 0; padding-top: var(--wp--preset--spacing--60); padding-bottom: var(--wp--preset--spacing--60);">';
+ wp_body_open();
+ // Classic themes such as Hale already open <main> in header.php.
+ echo '<div class="wp-site-blocks"><header class="wp-block-template-part">' .
+ 	$header_html .
+ 	'</header><main lang="en" class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top: 0; padding-top: var(--wp--preset--spacing--60); padding-bottom: var(--wp--preset--spacing--60);">';
+
 } else {
 	get_header();
 }
 ?>
 
-<div id="cookie-settings-page" class="<?= esc_attr(apply_filters('cookie_compliance_settings_page_class', 'cc:px-3 cc:text-lg')) ?>">
-	<div id="cookie-settings-confirmation" class="cc:mt-8 cc:mb-8 cc:hidden cc:w-full cc:w-max-[666px] <?php if ($support_dark_mode) echo "cc:!dark:text-white"; ?>">
-	<div class="cc:bg-green-800 cc:border-solid cc:border-4 cc:border-green-800 <?php if ($support_dark_mode) echo "cc:dark:bg-[#429b34] cc:dark:border-[#429b34]";?>" role="alert">
+<div id="cookie-settings-page" class="<?= esc_attr(
+	apply_filters("cookie_compliance_settings_page_class", "cc:px-3 cc:text-lg"),
+) ?>">
+	<div id="cookie-settings-confirmation" class="cc:mt-8 cc:mb-8 cc:hidden cc:w-full cc:w-max-[666px] <?php if (
+ 	$support_dark_mode
+ ) {
+ 	echo "cc:!dark:text-white";
+ } ?>">
+	<div class="cc:bg-green-800 cc:border-solid cc:border-4 cc:border-green-800 <?php if ($support_dark_mode) {
+ 	echo "cc:dark:bg-[#429b34] cc:dark:border-[#429b34]";
+ } ?>" role="alert">
 		<div>
-		<h2 class="cc:!text-white cc:text-lg cc:pt-[5px] cc:pb-[5px] cc:pl-[20px] cc:!m-0 has-text-color <?php if ($support_dark_mode) echo "cc:dark:text-black"; ?>">Success</h2>
+		<h2 class="cc:!text-white cc:text-lg cc:pt-[5px] cc:pb-[5px] cc:pl-[20px] cc:!m-0 has-text-color <?php if (
+  	$support_dark_mode
+  ) {
+  	echo "cc:dark:text-black";
+  } ?>">Success</h2>
 		</div>
-		<div class="cc:bg-white cc:p-[20px] <?php if ($support_dark_mode) echo "cc:dark:bg-neutral-700"; ?> ">
+		<div class="cc:bg-white cc:p-[20px] <?php if ($support_dark_mode) {
+  	echo "cc:dark:bg-neutral-700";
+  } ?> ">
 			<p class="cc:!m-0 cc:font-bold">
 				You&rsquo;ve set your cookie preferences.
 				<a id="cookie-confirmation-return" class='cc:hidden' href='#'>
@@ -382,12 +400,10 @@ if ($is_block_theme) {
 	</button>
 </div>
 
-<?php
-if ($is_block_theme) {
-	echo '</main>' . $footer_html . '</div>';
+<?php if ($is_block_theme) {
+	echo "</main>" . $footer_html . "</div>";
 	wp_footer();
-	echo '</body></html>';
+	echo "</body></html>";
 } else {
 	get_footer();
 }
-
